@@ -1,0 +1,12 @@
+.idea/
+.vscode/
+
+# PHP
+vendor/
+.phpunit.cache
+.phpunit.result.cache
+coverage/
+.test.php
+composer.lock
+.tool-versions
+

@@ -2,7 +2,6 @@
 
 namespace VerifyMy\SDK;
 
-use VerifyMy\Commons\Security\HMAC;
 use VerifyMy\SDK\Business\BusinessClient;
 
 final class VerifyMy implements VerifyMyInterface
@@ -12,8 +11,14 @@ final class VerifyMy implements VerifyMyInterface
      */
     private $businessClient;
 
-    /**
-     * @var HMAC $hmac
-     */
-    private $hmac;
+    public function __construct($nucleusAPIKey)
+    {
+        $businessClientClassName = BusinessClient::API_VERSIONS[BusinessClient::API_VERSION_V1];
+        $this->businessClient = new $businessClientClassName($nucleusAPIKey);
+    }
+
+    public function business(): BusinessClient
+    {
+        return $this->businessClient;
+    }
 }

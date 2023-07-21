@@ -7,7 +7,7 @@ use VerifyMy\SDK\Core\Validator\RequiredValidator;
 use VerifyMy\SDK\Core\Validator\UrlValidator;
 
 
-final class AddAllowedRedirectUrlsRequest extends DTO
+final class AllowedRedirectUrlsRequest extends DTO
 {
     protected $fillable = ["urls"];
 

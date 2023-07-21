@@ -2,8 +2,7 @@
 
 namespace VerifyMy\SDK;
 
-use VerifyMy\SDK\Business\Entity\Requests\AddAllowedRedirectUrlsRequest;
-use VerifyMy\SDK\Business\Entity\Responses\AddAllowedRedirectUrlsResponse;
+use VerifyMy\SDK\Business\Entity\Requests\AllowedRedirectUrlsRequest;
 use VerifyMy\SDK\Core\Validator\ValidationException;
 use VerifyMy\Commons\Transport\InvalidStatusCodeException;
 
@@ -32,14 +31,32 @@ final class BusinessClientV1 implements BusinessClient
     }
 
     /**
-     * @param AddAllowedRedirectUrlsRequest $request
-     * @return AddAllowedRedirectUrlsResponse
+     * @param AllowedRedirectUrlsRequest $request
+     * @return void
      * @throws InvalidStatusCodeException
      * @throws ValidationException
      */
-    public function addAllowedRedirectUrls(AddAllowedRedirectUrlsRequest $request): AddAllowedRedirectUrlsResponse
+    public function addAllowedRedirectUrls(AllowedRedirectUrlsRequest $request): void
     {
         $this->transport->put(
+            self::ENDPOINT_ADD_ALLOWED_REDIRECT_URLS,
+            $request->toArray(),
+            [
+                'Authorization' => $this->nucleusApiKey,
+            ],
+            [204]
+        );
+    }
+
+    /**
+     * @param AllowedRedirectUrlsRequest $request
+     * @return void
+     * @throws InvalidStatusCodeException
+     * @throws ValidationException
+     */
+    public function removeAllowedRedirectUrls(AllowedRedirectUrlsRequest $request): void
+    {
+        $this->transport->delete(
             self::ENDPOINT_ADD_ALLOWED_REDIRECT_URLS,
             $request->toArray(),
             [

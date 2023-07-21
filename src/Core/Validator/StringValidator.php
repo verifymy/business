@@ -1,6 +1,6 @@
 <?php
 
-namespace VerifyMyContent\SDK\Core\Validator;
+namespace VerifyMy\SDK\Core\Validator;
 
 
 final class StringValidator extends Validator

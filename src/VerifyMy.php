@@ -11,10 +11,10 @@ final class VerifyMy implements VerifyMyInterface
      */
     private $businessClient;
 
-    public function __construct($nucleusAPIKey)
+    public function __construct($baseURL, $nucleusAPIKey)
     {
         $businessClientClassName = BusinessClient::API_VERSIONS[BusinessClient::API_VERSION_V1];
-        $this->businessClient = new $businessClientClassName($nucleusAPIKey);
+        $this->businessClient = new $businessClientClassName($baseURL, $nucleusAPIKey);
     }
 
     public function business(): BusinessClient

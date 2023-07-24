@@ -1,6 +1,6 @@
 <?php
 
-namespace VerifyMy\Commons\Transport;
+namespace VerifyMy\SDK\Commons\Transport;
 
 use Exception;
 

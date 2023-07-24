@@ -1,11 +1,12 @@
 <?php
 
-namespace VerifyMy\Commons\Transport;
+namespace VerifyMy\SDK\Commons\Transport;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\ResponseInterface;
+use VerifyMy\SDK\Commons\Transport\InvalidStatusCodeException;
 
 
 class HTTP
@@ -122,6 +123,19 @@ class HTTP
     public function delete(string $path, array $headers = [], array $validStatusCodes = []): ResponseInterface
     {
         return $this->request("DELETE", $path, null, $headers, $validStatusCodes);
+    }
+
+
+    /**
+     * @param string $path
+     * @param array $headers
+     * @param array $validStatusCodes
+     * @return ResponseInterface
+     * @throws InvalidStatusCodeException
+     */
+    public function deleteWithBody(string $path, $body, array $headers = [], array $validStatusCodes = []): ResponseInterface
+    {
+        return $this->request("DELETE", $path, $body, $headers, $validStatusCodes);
     }
 
 

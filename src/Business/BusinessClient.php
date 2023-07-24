@@ -3,7 +3,7 @@
 namespace VerifyMy\SDK\Business;
 
 use VerifyMy\SDK\Business\Entity\Requests\AllowedRedirectUrlsRequest;
-use VerifyMy\Commons\Transport\InvalidStatusCodeException;
+use VerifyMy\SDK\Commons\Transport\InvalidStatusCodeException;
 use VerifyMy\SDK\Core\Validator\ValidationException;
 
 interface BusinessClient

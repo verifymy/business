@@ -1,15 +1,17 @@
 <?php
 
-namespace VerifyMy\SDK;
+namespace VerifyMy\SDK\Business;
 
+use VerifyMy\SDK\Commons\Transport\HTTP;
+use VerifyMy\SDK\Business\BusinessClient;
 use VerifyMy\SDK\Business\Entity\Requests\AllowedRedirectUrlsRequest;
 use VerifyMy\SDK\Core\Validator\ValidationException;
-use VerifyMy\Commons\Transport\InvalidStatusCodeException;
+use VerifyMy\SDK\Commons\Transport\InvalidStatusCodeException;
 
 
 final class BusinessClientV1 implements BusinessClient
 {
-    const ENDPOINT_ADD_ALLOWED_REDIRECT_URLS = '/allowed-redirects';
+    const ENDPOINT_ALLOWED_REDIRECT_URLS = '/allowed-redirects';
 
     /**
      * @var HTTP $transport
@@ -38,9 +40,10 @@ final class BusinessClientV1 implements BusinessClient
      */
     public function addAllowedRedirectUrls(AllowedRedirectUrlsRequest $request): void
     {
+        $data = $request->toArray();
         $this->transport->put(
-            self::ENDPOINT_ADD_ALLOWED_REDIRECT_URLS,
-            $request->toArray(),
+            self::ENDPOINT_ALLOWED_REDIRECT_URLS,
+            $data["urls"],
             [
                 'Authorization' => $this->nucleusApiKey,
             ],
@@ -56,13 +59,13 @@ final class BusinessClientV1 implements BusinessClient
      */
     public function removeAllowedRedirectUrls(AllowedRedirectUrlsRequest $request): void
     {
-        $this->transport->delete(
-            self::ENDPOINT_ADD_ALLOWED_REDIRECT_URLS,
-            $request->toArray(),
+        $data = $request->toArray();
+        $this->transport->deleteWithBody(
+            self::ENDPOINT_ALLOWED_REDIRECT_URLS,
+            $data["urls"],
             [
                 'Authorization' => $this->nucleusApiKey,
             ],
-            [204]
         );
     }
 }

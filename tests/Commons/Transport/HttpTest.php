@@ -4,10 +4,10 @@ namespace tests\Transport;
 
 use GuzzleHttp\Client as GuzzleClient;
 use PHPUnit\Framework\TestCase;
-use VerifyMyContent\Commons\Transport\HTTP;
-use VerifyMyContent\Commons\Transport\InvalidStatusCodeException;
+use VerifyMy\Commons\Transport\HTTP;
+use VerifyMy\Commons\Transport\InvalidStatusCodeException;
 
-// @covers \VerifyMyContent\Commons\Transport\HTTP
+// @covers \VerifyMy\Commons\Transport\HTTP
 class HttpTest extends TestCase
 {
     public function testGet()

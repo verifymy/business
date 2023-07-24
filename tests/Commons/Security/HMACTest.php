@@ -4,7 +4,7 @@ namespace VerifyMy\Commons\Security;
 
 use PHPUnit\Framework\TestCase;
 
-// @covers \VerifyMyContent\Commons\Security\HMAC
+// @covers \VerifyMy\Commons\Security\HMAC
 class HMACTest extends TestCase
 {
     private const API_KEY = "api-key";

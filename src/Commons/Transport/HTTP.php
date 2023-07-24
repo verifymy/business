@@ -4,9 +4,7 @@ namespace VerifyMy\Commons\Transport;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Psr7\Request as GuzzleRequest;
 use GuzzleHttp\RequestOptions;
-use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 
 

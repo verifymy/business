@@ -2,12 +2,11 @@
 
 namespace VerifyMy\SDK\Business;
 
-use VerifyMy\SDK\Business\Requests\AllowedRedirectUrlsRequest;
-use VerifyMy\SDK\Core\ExportableClient;
+use VerifyMy\SDK\Business\Entity\Requests\AllowedRedirectUrlsRequest;
 use VerifyMy\Commons\Transport\InvalidStatusCodeException;
 use VerifyMy\SDK\Core\Validator\ValidationException;
 
-interface BusinessClient extends ExportableClient
+interface BusinessClient
 {
     const API_VERSION_V1 = 'v1';
     const API_VERSIONS = [

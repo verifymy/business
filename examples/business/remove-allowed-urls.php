@@ -16,7 +16,7 @@ $vmc = new VerifyMy($baseURL, $nucleusApiKey, $apiSecret);
 
 //add new allowed url request
 $request = new AllowedRedirectUrlsRequest([
-    "urls" => ["https://amazon.com22"]
+    "urls" => ["https://amazon.com"]
 ]);
 
 try {

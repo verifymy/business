@@ -2,6 +2,7 @@
 
 namespace VerifyMy\SDK\Business;
 
+use VerifyMy\SDK\Commons\Security\HMAC;
 use VerifyMy\SDK\Commons\Transport\HTTP;
 use VerifyMy\SDK\Business\BusinessClient;
 use VerifyMy\SDK\Business\Entity\Requests\AllowedRedirectUrlsRequest;
@@ -18,6 +19,11 @@ final class BusinessClientV1 implements BusinessClient
      */
     private $transport;
 
+    /**
+     * @var HMAC $hmac
+     */
+    private HMAC $hmac;
+
     
     /**
      * @var string $baseURL
@@ -25,11 +31,12 @@ final class BusinessClientV1 implements BusinessClient
      */
     private $nucleusApiKey;
 
-    public function __construct(string $baseURL, string $nucleusApiKey)
+    public function __construct(string $baseURL, string $nucleusApiKey, string $apiSecret)
     {
         $uri = BusinessClient::URI;
         $this->transport = new HTTP("$baseURL/$uri");
         $this->nucleusApiKey = $nucleusApiKey;
+        $this->hmac = new HMAC($nucleusApiKey, $apiSecret);
     }
 
     /**
@@ -45,7 +52,7 @@ final class BusinessClientV1 implements BusinessClient
             self::ENDPOINT_ALLOWED_REDIRECT_URLS,
             $data["urls"],
             [
-                'Authorization' => $this->nucleusApiKey,
+                'Authorization' => $this->hmac->sign($data["urls"]),
             ],
             [204]
         );
@@ -64,8 +71,9 @@ final class BusinessClientV1 implements BusinessClient
             self::ENDPOINT_ALLOWED_REDIRECT_URLS,
             $data["urls"],
             [
-                'Authorization' => $this->nucleusApiKey,
+                'Authorization' => $this->hmac->sign($data["urls"]),
             ],
         );
     }
 }
+    

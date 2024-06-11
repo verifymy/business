@@ -8,9 +8,10 @@ require_once __DIR__ . "/../../vendor/autoload.php";
 
 $baseURL = "https://oauth-dev.verifymycontent.com";
 $nucleusApiKey = "222222";
+$apiSecret = "22222222";
 
 # Setup SDK
-$vmc = new VerifyMy($baseURL, $nucleusApiKey);
+$vmc = new VerifyMy($baseURL, $nucleusApiKey, $apiSecret);
 
 
 //add new allowed url request

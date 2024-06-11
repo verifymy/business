@@ -13,7 +13,7 @@ interface BusinessClient
         self::API_VERSION_V1 => BusinessClientV1::class,
     ];
 
-    const URI = 'business';
+    const URI = 'v1/business';
 
     /**
      * @param AllowedRedirectUrlsRequest $request

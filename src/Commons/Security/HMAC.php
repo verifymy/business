@@ -1,6 +1,6 @@
 <?php
 
-namespace VerifyMy\Commons\Security;
+namespace VerifyMy\SDK\Commons\Security;
 
 class HMAC {
 
@@ -41,5 +41,13 @@ class HMAC {
     private function removePrefix($header)
     {
         return preg_replace('/^hmac ?/i', '', $header);
+    }
+
+    /*
+     * Sign the input with the API key and secret
+     */
+    public function sign($input): string
+    {
+        return sprintf("hmac %s", $this->generate($input));
     }
 }
